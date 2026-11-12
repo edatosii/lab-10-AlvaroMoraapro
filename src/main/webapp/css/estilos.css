@@ -1,57 +1,727 @@
-/* Estilos de la aplicación. Esta página YA está hecha: no es necesario modificarla. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
 :root {
-    --azul: #1f3a5f; --acento: #c8741a; --verde: #2f8a4a; --rojo: #b3261e;
-    --fondo: #f4f6f9; --borde: #d5dbe3; --texto: #1c2733; --gris: #5f6b7a;
+    /* Apple Color Tokens */
+    --color-apple-blue: #0071e3;
+    --color-link-blue: #0066cc;
+    --color-signal-blue: #2997ff;
+    --color-carbon: #1d1d1f;
+    --color-frost: #f5f5f7;
+    --color-ice: #f4f8fb;
+    --color-smoke: #333333;
+    --color-graphite: #474747;
+    --color-ash: #707070;
+    --color-mist: #858585;
+    --color-onyx: #000000;
+    --color-pebble: #e2e2e5;
+    --color-hairline: #d2d2d7;
+
+    /* Typography — Font Families */
+    --font-sf-pro-display: 'SF Pro Display', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-sf-pro-text: 'SF Pro Text', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Typography — Scale */
+    --text-caption: 12px;
+    --leading-caption: 1.33;
+    --tracking-caption: -0.264px;
+
+    --text-body-sm: 14px;
+    --leading-body-sm: 1.29;
+    --tracking-body-sm: -0.224px;
+
+    --text-body: 17px;
+    --leading-body: 1.47;
+    --tracking-body: -0.272px;
+
+    --text-subheading: 21px;
+    --leading-subheading: 1.24;
+    --tracking-subheading: -0.105px;
+
+    --text-heading-sm: 28px;
+    --leading-heading-sm: 1.18;
+    --tracking-heading-sm: 0.196px;
+
+    --text-heading: 40px;
+    --leading-heading: 1.14;
+    --tracking-heading: 0.44px;
+
+    --text-heading-lg: 44px;
+    --leading-heading-lg: 1.18;
+    --tracking-heading-lg: -0.44px;
+
+    --text-display: 56px;
+    --leading-display: 1.07;
+    --tracking-display: 0.616px;
+
+    /* Typography — Weights */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Spacing */
+    --spacing-unit: 4px;
+    --spacing-4: 4px;
+    --spacing-8: 8px;
+    --spacing-12: 12px;
+    --spacing-16: 16px;
+    --spacing-20: 20px;
+    --spacing-24: 24px;
+    --spacing-40: 40px;
+    --spacing-48: 48px;
+    --spacing-56: 56px;
+
+    /* Layout */
+    --page-max-width: 1440px;
+    --section-gap: 64px;
+    --card-padding: 24px;
+    --element-gap: 12px;
+
+    /* Border Radius (Strict 8px & 980px rule) */
+    --radius-lg: 8px;
+    --radius-full: 980px;
+    --radius-tags: 980px;
+    --radius-cards: 8px;
+    --radius-images: 8px;
+    --radius-inputs: 8px;
+    --radius-buttons: 980px;
+
+    /* Shadows (Strictly reserved for isolating hero/canvas render) */
+    --shadow-xl: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+
+    /* Surfaces */
+    --surface-canvas: #f5f5f7;
+    --surface-elevated-wash: #f4f8fb;
+    --surface-pebble: #e2e2e5;
+
+    /* Apple Motion Curves */
+    --ease-apple-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-apple-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+    /* Compatibilidad con variables originales */
+    --azul: var(--color-carbon);
+    --acento: var(--color-link-blue);
+    --verde: #2f8a4a;
+    --rojo: #b3261e;
+    --fondo: var(--surface-canvas);
+    --borde: var(--color-hairline);
+    --texto: var(--color-carbon);
+    --gris: var(--color-ash);
 }
-* { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--fondo); color: var(--texto); line-height: 1.5; }
-.menu { background: var(--azul); display: flex; gap: .25rem; padding: 0 1rem; align-items: center; flex-wrap: wrap; }
-.menu .marca { color: #fff; font-weight: 700; margin-right: 1.5rem; padding: .8rem 0; text-decoration: none; }
-.menu a.enlace { color: #dbe6f5; text-decoration: none; padding: .8rem .9rem; border-bottom: 3px solid transparent; }
-.menu a.enlace:hover { color: #fff; border-bottom-color: var(--acento); }
-.menu a.enlace.activo { color: #fff; border-bottom-color: var(--acento); }
-main { max-width: 1100px; margin: 1.5rem auto; padding: 0 1rem; }
-h1 { color: var(--azul); margin: 0 0 .25rem; }
-h2 { color: var(--azul); font-size: 1.15rem; margin: 0 0 .75rem; }
-.sub { color: var(--gris); margin: 0 0 1.25rem; }
-.tarjeta { background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; }
-.mensaje { padding: .7rem 1rem; border-radius: 8px; margin: 0 0 1rem; border: 1px solid; }
-.mensaje.ok { background: #e6f4ea; border-color: #9fd3ac; color: #1e5b30; }
-.mensaje.error { background: #fdecea; border-color: #f0b3ae; color: var(--rojo); }
-label { display: block; font-weight: 600; margin: .75rem 0 .25rem; }
-input[type=text], input[type=number], textarea { width: 100%; padding: .55rem .7rem; border: 1px solid var(--borde); border-radius: 8px; font: inherit; background: #fff; }
-textarea { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem; min-height: 11rem; }
-.boton { display: inline-block; background: var(--azul); color: #fff; border: 0; border-radius: 8px; padding: .55rem 1rem; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
-.boton:hover { background: #152a46; }
-.boton.acento { background: var(--acento); }
-.boton.acento:hover { background: #a85f12; }
-.boton.peligro { background: var(--rojo); }
-.boton.suave { background: #e8edf3; color: var(--azul); }
-.boton.suave:hover { background: #d9e1ea; }
-.boton[disabled] { opacity: .45; cursor: not-allowed; }
-.fila { display: flex; gap: .75rem; flex-wrap: wrap; align-items: flex-end; }
-.fila > div { flex: 1 1 140px; }
-.acciones { margin-top: 1rem; display: flex; gap: .6rem; flex-wrap: wrap; }
-table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--borde); }
-th { color: var(--gris); font-size: .85rem; text-transform: uppercase; letter-spacing: .03em; }
-tr.fila-miembro { cursor: pointer; }
-tr.fila-miembro:hover { background: #f0f4f9; }
-tr.fila-miembro.seleccionada { background: #e3eefb; }
-code { background: #eef1f5; padding: .1rem .35rem; border-radius: 4px; }
-.ayuda { color: var(--gris); font-size: .92rem; }
-.lienzo { overflow: auto; background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: .5rem; text-align: center; }
-.lienzo canvas { display: inline-block; }
-.leyenda { display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: .85rem; color: var(--gris); margin: .6rem 0 0; }
-.leyenda span::before { content: ""; display: inline-block; width: .8rem; height: .8rem; border-radius: 3px; margin-right: .35rem; vertical-align: -1px; border: 2px solid; }
-.leyenda .l-sujeto::before { background: #fff3d6; border-color: #c8741a; }
-.leyenda .l-asc::before { background: #e3eefb; border-color: #2f6db5; }
-.leyenda .l-desc::before { background: #e2f4e6; border-color: #2f8a4a; }
-.panel { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-@media (min-width: 900px) { .panel { grid-template-columns: 1fr 1fr; } }
-.oculto { display: none !important; }
-.inicio { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-.inicio a.tarjeta { text-decoration: none; color: inherit; display: block; }
-.inicio a.tarjeta:hover { border-color: var(--acento); }
-.inicio h2 { margin-bottom: .35rem; }
-pre.ejemplo { background: #eef1f5; border-radius: 8px; padding: .7rem .9rem; overflow: auto; margin: .4rem 0; }
+
+/* ==========================================================================
+   Keyframes — Apple Choreography
+   ========================================================================== */
+@keyframes appleFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes appleHeroZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.97) translateY(10px);
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        box-shadow: var(--shadow-xl);
+    }
+}
+
+@keyframes appleAlertSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.99);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sf-pro-text);
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    background: var(--surface-canvas);
+    color: var(--color-carbon);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Global Nav Bar (.menu) — Translucent Frosted Glass
+   ========================================================================== */
+.menu {
+    background: rgba(29, 29, 31, 0.82);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--color-smoke);
+    display: flex;
+    gap: var(--spacing-24);
+    padding: 0 var(--spacing-24);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.35s var(--ease-apple-out);
+}
+
+.menu .marca {
+    color: var(--color-frost);
+    font-family: var(--font-sf-pro-display);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--tracking-body-sm);
+    margin-right: var(--spacing-16);
+    padding: var(--spacing-8) 0;
+    text-decoration: none;
+    transition: opacity 0.25s var(--ease-apple-out);
+}
+
+.menu .marca:hover {
+    opacity: 0.75;
+}
+
+.menu a.enlace {
+    position: relative;
+    color: var(--color-frost);
+    font-family: var(--font-sf-pro-text);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-caption);
+    letter-spacing: var(--tracking-caption);
+    text-decoration: none;
+    padding: var(--spacing-8) var(--spacing-4);
+    border-bottom: 1px solid transparent;
+    opacity: 0.78;
+    transition: opacity 0.25s var(--ease-apple-out), color 0.25s var(--ease-apple-out);
+}
+
+.menu a.enlace::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: var(--color-signal-blue);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s var(--ease-apple-out);
+}
+
+.menu a.enlace:hover {
+    opacity: 1;
+    color: var(--color-frost);
+}
+
+.menu a.enlace:hover::after {
+    transform: scaleX(1);
+}
+
+.menu a.enlace.activo {
+    opacity: 1;
+    color: var(--color-frost);
+    font-weight: var(--font-weight-semibold);
+}
+
+.menu a.enlace.activo::after {
+    background: var(--color-frost);
+    transform: scaleX(1);
+}
+
+/* ==========================================================================
+   Layout & Typography Hierarchy (Staggered Entrance)
+   ========================================================================== */
+main {
+    max-width: var(--page-max-width);
+    margin: var(--spacing-48) auto var(--section-gap);
+    padding: 0 var(--spacing-24);
+}
+
+h1 {
+    font-family: var(--font-sf-pro-display);
+    color: var(--color-carbon);
+    font-size: var(--text-heading);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    margin: 0 0 var(--spacing-8);
+    animation: appleFadeUp 0.65s var(--ease-apple-out) both;
+}
+
+h2 {
+    font-family: var(--font-sf-pro-display);
+    color: var(--color-carbon);
+    font-size: var(--text-heading-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-heading-sm);
+    letter-spacing: var(--tracking-heading-sm);
+    margin: 0 0 var(--spacing-16);
+}
+
+.sub {
+    font-family: var(--font-sf-pro-text);
+    color: var(--color-ash);
+    font-size: var(--text-subheading);
+    font-weight: var(--font-weight-light);
+    line-height: var(--leading-subheading);
+    letter-spacing: var(--tracking-subheading);
+    margin: 0 0 var(--spacing-40);
+    animation: appleFadeUp 0.65s var(--ease-apple-out) 0.08s both;
+}
+
+/* ==========================================================================
+   Surfaces & Sections (.tarjeta)
+   Zero drop shadows, 8px radius, 24px padding, hairline border
+   ========================================================================== */
+.tarjeta {
+    background: #ffffff;
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-cards);
+    padding: var(--card-padding);
+    margin-bottom: var(--spacing-24);
+    animation: appleFadeUp 0.7s var(--ease-apple-out) 0.14s both;
+    transition: border-color 0.3s var(--ease-apple-out), background-color 0.3s var(--ease-apple-out), transform 0.35s var(--ease-apple-out);
+}
+
+.panel > .tarjeta:nth-child(2) {
+    animation-delay: 0.22s;
+}
+
+/* ==========================================================================
+   Feedback Messages (.mensaje)
+   ========================================================================== */
+.mensaje {
+    padding: var(--spacing-12) var(--spacing-16);
+    border-radius: var(--radius-cards);
+    margin: 0 0 var(--spacing-24);
+    border: 1px solid;
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body-sm);
+    letter-spacing: var(--tracking-body-sm);
+    animation: appleAlertSlide 0.45s var(--ease-apple-spring) both;
+}
+
+.mensaje.ok {
+    background: var(--surface-elevated-wash);
+    border-color: var(--color-signal-blue);
+    color: var(--color-carbon);
+}
+
+.mensaje.error {
+    background: #fdecea;
+    border-color: #f0b3ae;
+    color: var(--rojo);
+}
+
+/* ==========================================================================
+   Forms & Inputs — Fluid Focus Ring (#0071e3)
+   ========================================================================== */
+label {
+    display: block;
+    font-family: var(--font-sf-pro-text);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-body-sm);
+    letter-spacing: var(--tracking-body-sm);
+    color: var(--color-carbon);
+    margin: var(--spacing-16) 0 var(--spacing-8);
+}
+
+input[type=text],
+input[type=number],
+textarea {
+    width: 100%;
+    padding: 10px var(--spacing-12);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-inputs);
+    font-family: var(--font-sf-pro-text);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    background: var(--color-frost);
+    color: var(--color-carbon);
+    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0);
+    transition: border-color 0.25s var(--ease-apple-out), background-color 0.25s var(--ease-apple-out), box-shadow 0.25s var(--ease-apple-spring);
+}
+
+input[type=text]:hover,
+input[type=number]:hover,
+textarea:hover {
+    border-color: var(--color-mist);
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-apple-blue);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.22);
+}
+
+textarea {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: var(--text-body-sm);
+    line-height: 1.5;
+    letter-spacing: 0;
+    min-height: 12rem;
+}
+
+/* ==========================================================================
+   Buttons (.boton) — Tactile Pill Micro-interaction (980px radius)
+   ========================================================================== */
+.boton {
+    display: inline-block;
+    background: var(--color-apple-blue);
+    color: var(--color-ice);
+    border: 1px solid transparent;
+    border-radius: var(--radius-buttons);
+    padding: 11px 15px;
+    font-family: var(--font-sf-pro-text);
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.18;
+    letter-spacing: var(--tracking-body);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.22s var(--ease-apple-spring), opacity 0.2s var(--ease-apple-out), background-color 0.25s var(--ease-apple-out), border-color 0.25s var(--ease-apple-out), color 0.25s var(--ease-apple-out);
+}
+
+.boton:hover {
+    opacity: 0.9;
+}
+
+.boton:active {
+    transform: scale(0.965);
+}
+
+/* Outlined Pill Button — Paired secondary action (#0066cc) */
+.boton.acento {
+    background: transparent;
+    color: var(--color-link-blue);
+    border: 1px solid var(--color-link-blue);
+}
+
+.boton.acento:hover {
+    background: var(--surface-elevated-wash);
+    opacity: 1;
+}
+
+/* Neutral Surface Pill Button (Pebble #e2e2e5) */
+.boton.suave {
+    background: var(--surface-pebble);
+    color: var(--color-carbon);
+    border: 1px solid transparent;
+}
+
+.boton.suave:hover {
+    background: #d5d5d9;
+    opacity: 1;
+}
+
+/* Destructive Outlined Pill Button */
+.boton.peligro {
+    background: transparent;
+    color: var(--rojo);
+    border: 1px solid var(--rojo);
+}
+
+.boton.peligro:hover {
+    background: #fdecea;
+    opacity: 1;
+}
+
+.boton[disabled] {
+    background: var(--surface-pebble);
+    color: var(--color-mist);
+    border-color: transparent;
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==========================================================================
+   Form Rows & Action Bars
+   ========================================================================== */
+.fila {
+    display: flex;
+    gap: var(--element-gap);
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.fila > div {
+    flex: 1 1 160px;
+}
+
+.acciones {
+    margin-top: var(--spacing-20);
+    display: flex;
+    gap: var(--element-gap);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ==========================================================================
+   Data Tables — Smooth Row Transitions & Apple Blue Active Switch
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-feature-settings: "numr";
+}
+
+th, td {
+    text-align: left;
+    padding: var(--spacing-12) var(--spacing-12);
+    border-bottom: 1px solid var(--color-hairline);
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body-sm);
+    letter-spacing: var(--tracking-body-sm);
+    transition: background-color 0.22s var(--ease-apple-out), color 0.22s var(--ease-apple-out), padding-left 0.25s var(--ease-apple-out);
+}
+
+th {
+    color: var(--color-ash);
+    font-size: var(--text-caption);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--leading-caption);
+    letter-spacing: var(--tracking-caption);
+    text-transform: uppercase;
+}
+
+tr.fila-miembro {
+    cursor: pointer;
+}
+
+tr.fila-miembro:hover td {
+    background: var(--surface-elevated-wash);
+}
+
+tr.fila-miembro:hover td:first-child {
+    padding-left: var(--spacing-16);
+}
+
+/* Selected state uses Apple Blue fill (#0071e3) with Ice text (#f4f8fb) */
+tr.fila-miembro.seleccionada td {
+    background: var(--color-apple-blue);
+    color: var(--color-ice);
+    border-bottom-color: var(--color-apple-blue);
+}
+
+tr.fila-miembro.seleccionada code {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-ice);
+}
+
+/* ==========================================================================
+   Code, Help & Examples
+   ========================================================================== */
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: var(--text-caption);
+    background: var(--surface-pebble);
+    color: var(--color-carbon);
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s var(--ease-apple-out), color 0.2s var(--ease-apple-out);
+}
+
+.ayuda {
+    color: var(--color-ash);
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body-sm);
+    letter-spacing: var(--tracking-body-sm);
+}
+
+pre.ejemplo {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: var(--text-body-sm);
+    background: var(--color-frost);
+    color: var(--color-carbon);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-16);
+    overflow: auto;
+    margin: var(--spacing-12) 0;
+}
+
+/* ==========================================================================
+   Genealogical Tree Canvas (.lienzo) — Hero Render Animation
+   ========================================================================== */
+.lienzo {
+    overflow: auto;
+    background: var(--surface-elevated-wash);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-24);
+    text-align: center;
+}
+
+.lienzo canvas {
+    display: inline-block;
+    background: #ffffff;
+    border-radius: var(--radius-images);
+    box-shadow: var(--shadow-xl);
+    animation: appleHeroZoom 0.85s var(--ease-apple-out) 0.18s both;
+    transition: transform 0.4s var(--ease-apple-out);
+}
+
+.leyenda {
+    display: flex;
+    gap: var(--element-gap);
+    flex-wrap: wrap;
+    font-size: var(--text-caption);
+    line-height: var(--leading-caption);
+    letter-spacing: var(--tracking-caption);
+    color: var(--color-graphite);
+    margin: var(--spacing-16) 0 0;
+}
+
+.leyenda span {
+    background: var(--color-frost);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-tags);
+    padding: var(--spacing-4) var(--spacing-12);
+    display: inline-flex;
+    align-items: center;
+    animation: appleFadeUp 0.6s var(--ease-apple-out) 0.28s both;
+    transition: border-color 0.25s var(--ease-apple-out), background-color 0.25s var(--ease-apple-out), transform 0.25s var(--ease-apple-spring);
+}
+
+.leyenda span:hover {
+    background: var(--surface-elevated-wash);
+    border-color: var(--color-signal-blue);
+    transform: translateY(-1px);
+}
+
+.leyenda span::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-tags);
+    margin-right: var(--spacing-8);
+    border: 2px solid;
+}
+
+.leyenda .l-sujeto::before {
+    background: #fff3d6;
+    border-color: #c8741a;
+}
+
+.leyenda .l-asc::before {
+    background: #e3eefb;
+    border-color: #2f6db5;
+}
+
+.leyenda .l-desc::before {
+    background: #e2f4e6;
+    border-color: #2f8a4a;
+}
+
+/* ==========================================================================
+   Grid Panels & Home Showcase (.panel, .inicio)
+   ========================================================================== */
+.panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-24);
+}
+
+@media (min-width: 900px) {
+    .panel {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.oculto {
+    display: none !important;
+}
+
+.inicio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-20);
+}
+
+.inicio a.tarjeta {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: #ffffff;
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-40) var(--card-padding);
+    text-align: center;
+    transition: transform 0.4s var(--ease-apple-out), background-color 0.3s var(--ease-apple-out), border-color 0.3s var(--ease-apple-out);
+}
+
+.inicio a.tarjeta:nth-child(2) {
+    animation-delay: 0.22s;
+}
+
+.inicio a.tarjeta:hover {
+    background: var(--surface-elevated-wash);
+    border-color: var(--color-signal-blue);
+    transform: translateY(-3px) scale(1.008);
+}
+
+.inicio a.tarjeta:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.inicio h2 {
+    margin-bottom: var(--spacing-8);
+    color: var(--color-carbon);
+    justify-content: center;
+    transition: color 0.25s var(--ease-apple-out);
+}
+
+.inicio a.tarjeta:hover h2 {
+    color: var(--color-link-blue);
+}
+
+/* Ghost Links — Inline Links */
+a:not(.boton):not(.enlace):not(.marca):not(.tarjeta) {
+    color: var(--color-link-blue);
+    text-decoration: none;
+    transition: color 0.2s var(--ease-apple-out);
+}
+
+a:not(.boton):not(.enlace):not(.marca):not(.tarjeta):hover {
+    text-decoration: underline;
+}
+
+/* Accesibilidad: respeta a usuarios con reducción de movimiento activada */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
